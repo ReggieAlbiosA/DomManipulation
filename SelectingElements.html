@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body{
+            /* background-color: rgb(204, 202, 202); */
+            background: linear-gradient(to right, #4a82cf, #745bba);
+            display: grid;
+            row-gap: 170px;
+            place-items: center;
+            padding: 10% 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* div default styles */
+        div:not(.separate-div):not(.login-form):not(.login-links):not(.container):not(.item){
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            border: 1px solid black;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+       div > h2{
+            white-space: nowrap;
+            position: absolute;
+            top: -40px;
+        }
+        .separate-div{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: relative;
+            place-items: center;
+            gap: 20px;
+
+        }
+        .login-form{
+            width: 350px;
+            height: 550px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            
+        }
+      
+        input:focus{
+            outline: none;
+        }
+        .login-links{
+            text-align: center;
+            color: gray;
+            font-size: 0.85rem;
+        }
+
+        .container{
+            width: 800px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-evenly; 
+            align-items: center;
+            background-color: white;
+            margin-top: 10%;
+            margin-inline: auto;
+            column-gap: 40px;
+            border: 1px solid black;
+        }
+
+        .container > div{
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            height: 400px;
+            box-shadow: 0 5px 30px -8px rgb(197, 197, 197);
+            cursor: pointer;
+            position: relative;
+            isolation: isolate;
+            width: 20%;
+
+            transition: width 0.5s;
+        }
+        .container > div:hover{
+            width: 100%;
+        }
+        .container > div:hover img{
+            clip-path: inset(0) !important;
+        }
+       
+        p:not(.highlight){
+            font-size: 1.8rem;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            z-index: -1;
+            bottom:  0px;
+            position: absolute;
+        }   
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+            color: red;
+        }
+      /* Styling for the selected text wrapped in span */
+.highlighted-text {
+    background-color: yellow;
+    font-weight: bold;
+    color: red;
+}
+
+
+
+    </style>
+
+</head>
+<body>
+
+        <h1>Using JS getElements to style an element</h1>
+
+        
+        <div>Default</div>
+        <div id="hover-me">
+            <h2>Using document.getElementById()</h2>
+                hover me
+        </div>
+        <div class="smooth-box">
+            <h2>Using document.getElementsByClassName()</h2>
+                smooth box
+        </div>
+     
+        <div class="separate-div">
+            <h2>Using document.getElementsByTagName()</h2>        
+            <div>Im div</div>
+            <span>Im Span</span>
+            <div>Im div</div>
+            <span>Im Span</span>
+            <div>Im div</div>
+            <span>Im Span</span>
+        </div>
+
+
+        <div class="separate-div">
+            <h2>Using document.querySelector('.myClass')</h2>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+        </div>
+
+        <div class="separate-div">
+            <h2>Using document.querySelectorAll('.myClass')</h2>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+            <div>I am not unique</div>
+        </div>
+
+        <div class="login-form">
+            <h2>Using document.getElementByName('.myClass'), document.links and document.forms</h2>
+            <h1>Login</h1>
+            <form id="myForm">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" name="submit" value="Login">
+            </form>
+                <div class="login-links">
+                    <span>Forgot </span><a href="#">Password?</a> 
+                    <br>
+                    <br>
+                    <span>Don't have an account? </span><a href="#">Sign Up</a>
+                </div>
+                
+        </div>
+
+        <div class="container">
+            <h2>document.image</h2>
+            <div class="item"><img src="../CSS_Fundamentals/images/G3G5_231117_bear_steps.webp" alt=""><p>CSS</p></div>
+            <div class="item"><img src="../CSS_Fundamentals/images/Brown-bear-Finland.webp" alt=""><p>Image</p></div>
+            <div class="item"><img src="../CSS_Fundamentals/images/why-are-zoos-good.jpg" alt=""><p>Hover</p></div>
+            <div class="item"><img src="../CSS_Fundamentals/images/article-animals-of-zimbabwe2.jpg" alt=""><p>Effect</p></div>
+        </div>
+
+
+        <p class="highlight">Select some text in this paragraph to highlight it with custom styling.</p>
+
+        <script>
+
+            // document.getElementById()
+              document.getElementById('hover-me').addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'red';
+            this.style.transition = 'background-color 0.3s';
+        });
+
+        document.getElementById('hover-me').addEventListener('mouseout', function() {
+            this.style.backgroundColor = 'yellow';
+        });
+
+
+            // document.getElementsByClassName()
+
+           document.getElementsByClassName('smooth-box')[0].style.borderRadius = '20%';
+
+
+            // document.getElementsByTagName()
+
+            let spans = document.getElementsByTagName('span');
+            let filteredSpans = Array.from(spans).filter(span => 
+                !span.parentElement.classList.contains('login-links')
+            );
+
+            for (let i = 0; i < filteredSpans.length; i++) {
+                filteredSpans[i].style.backgroundColor = 'green';
+                filteredSpans[i].style.width = '300px';  
+                filteredSpans[i].style.aspectRatio = '1/1';  
+                filteredSpans[i].style.display = 'grid';  
+                filteredSpans[i].style.placeItems = 'center';
+            }
+
+            console.log(filteredSpans);
+
+
+            let divsInsideSepDiv = document.getElementsByClassName('separate-div')[0].getElementsByTagName('div');
+            for (let i = 0; i < divsInsideSepDiv.length; i++) {
+                divsInsideSepDiv[i].style.width = '250px';
+                divsInsideSepDiv[i].style.height = '250px';
+            }
+
+
+            // document.querySelector()
+            document.querySelector('.separate-div:nth-of-type(5) > div:nth-of-type(5)').style.backgroundColor = 'lightblue';
+
+            const styleSheet = document.createElement('style');
+            styleSheet.type = 'text/css';
+
+            let keyframes = `
+            @keyframes growCircle {
+            from {
+                scale : 0.6;
+            }
+            to {
+                scale: 0.9;
+            }
+            }
+            `;
+
+            styleSheet.innerHTML = keyframes;
+
+            document.head.appendChild(styleSheet);
+
+            document.querySelector('.separate-div:nth-of-type(5) > div:nth-of-type(5)').style.animation = 'growCircle 1s ease-in-out infinite alternate';
+            
+
+
+            // document.querySelectorAll()
+            let cornersStyle = document.querySelectorAll('.separate-div:nth-of-type(6) > div:not(:nth-of-type(5))');
+            for (let i = 0; i < cornersStyle.length; i++) {
+                cornersStyle[i].style.animation = 'growCircle 1s ease-in-out infinite alternate';
+                cornersStyle[i].style.backgroundColor = 'lightblue';
+            }
+
+
+            // document.getElementByName()
+            document.querySelectorAll('form input').forEach((input) => {
+                input.style.width = '98%';
+                input.style.height = '20%';
+                input.style.border = 'none';
+                input.style.boxSizing = 'border-box';
+                
+            });
+            const usernameField = document.getElementsByName('username')[0];
+            const passwordField = document.getElementsByName('password')[0];
+            const submitField = document.getElementsByName('submit')[0];
+
+            document.querySelectorAll('form input').forEach(element => {
+                if(element.name !== 'submit') {
+                    element.style.backgroundColor = 'transparent';
+                    element.style.borderBottom = '2px solid #ABA8AB'; 
+                }                
+            });
+          
+            usernameField.style.padding = '5px';
+            passwordField.style.padding = '5px';
+
+            submitField.style.background = "linear-gradient(to right, #3991d7, #8b45ad)";
+            submitField.style.textAlign = 'center';
+            submitField.style.color = 'white';
+            submitField.style.cursor = 'pointer';
+
+
+            // document.links
+
+            let styleLink = document.links;
+            for (let i = 0; i < styleLink.length; i++) {
+                styleLink[i].style.color = '#2f63a4';
+                styleLink[i].style.textDecoration = 'none'; 
+                styleLink[i].style.fontWeight = '600';
+            }
+            
+            // document.forms
+
+            let styleForm = document.forms;
+            for (let i = 0; i < styleForm.length; i++) {
+                styleForm[i].style.width = '270px';
+                styleForm[i].style.height = '230px';
+                styleForm[i].style.display = 'flex';
+                styleForm[i].style.flexDirection = 'column';
+                styleForm[i].style.justifyContent = 'space-evenly';
+                styleForm[i].style.alignItems = 'center';
+            }
+
+
+            // document.images
+            let styleImage = document.images;
+            for (let i = 0; i < styleImage.length; i++) {
+                styleImage[i].style.width = '100%';
+                styleImage[i].style.minHeight = '405px';
+                styleImage[i].style.objectFit = 'cover';
+                styleImage[i].style.zIndex = '100';
+                styleImage[i].style.transition = 'clip-path 0.5s';
+                styleImage[i].style.clipPath = 'inset(0 0 40px 0)';
+            }
+        
+            // similar to document.activeElement
+        document.querySelectorAll('input, textarea, button, a').forEach(el => {
+            el.addEventListener('focus', function() {
+                el.style.backgroundColor = 'lightblue';
+                el.style.color = 'white';
+                el.style.padding = '5px';
+                el.style.borderRadius = '5px';
+                el.style.cursor = 'pointer';
+                el.style.textAlign = 'center';
+                el.style.fontWeight = '600';
+            });
+            el.addEventListener('blur', function() {
+                el.style.backgroundColor = ''; // Reset or set default styles
+                el.style.color = '';
+                el.style.padding = '';
+                el.style.borderRadius = '';
+                el.style.cursor = '';
+                el.style.textAlign = '';
+                el.style.fontWeight = '';
+            });
+        });
+
+        // document.elementFromPoint()
+
+            // Function to handle mouse click
+       // Function to handle mouse click
+        function logCoordinatesAndElement(e) {
+            // Get the mouse coordinates
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // Get the element under the mouse cursor at the click position
+            const element = document.elementFromPoint(x, y);
+            
+            // Log the coordinates and the element to the console
+            console.log(`position: (${x}, ${y})`);
+            console.log('Element under cursor:', element);
+        }
+        // Add an event listener to track mouse clicks
+        document.addEventListener('click', logCoordinatesAndElement);
+
+
+// document.getSelection()
+document.addEventListener('mouseup', function() {
+    const selection = document.getSelection();
+    if (selection && selection.rangeCount > 0 && selection.toString().trim().length > 0) {
+        const range = selection.getRangeAt(0);
+
+        // Create a new <span> element specifically for the selection
+        const span = document.createElement('span');
+
+        // Apply a specific class for styling this selection
+        span.classList.add('highlighted-text');
+
+        // Wrap the selected content in the new span
+        range.surroundContents(span);
+
+        // Clear the selection
+        selection.removeAllRanges();
+    }
+});
+    
+
+        </script>
+</body>
+</html>

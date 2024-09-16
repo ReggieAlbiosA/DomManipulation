@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            font-size: 1.5em;
+            margin: 15px;
+        }
+
+        .dark{
+            background-color: black;
+            color: white;
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <h1 id="intro-text">Intro to the Document Object Model</h1>
+    <p>This is some content to display in  the  document.</p>
+
+    <div class="custom-bg">
+        <p>Here is more content inside a div element.</p>
+        <div>
+            <p>And even more content inside a nested div element.</p>
+        </div>
+    </div>
+    <div>
+        <button onclick="document.body.classList.toggle('dark')">
+        toggle style
+        </button>
+    </div>
+
+    <script>
+        let h1Element = document.getElementById('intro-text');
+        h1Element.firstChild.data = 'Hello World!';
+        h1Element.style.color = 'yellow';
+        
+        let pElements = document.getElementsByTagName('p'); //HTML collection
+        for (let pElement of pElements) {
+            pElement.style.color = 'red';
+        }
+
+        let customDivs = document.getElementsByClassName('custom-bg');
+        for (let customDiv of customDivs)  {
+            customDiv.style.backgroundColor = 'dimgray';
+        } 
+    </script>
+
+</body>
+</html>
