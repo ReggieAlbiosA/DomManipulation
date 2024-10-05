@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+
+
+
+
+    <!-- 1. Modifying Element Content -->
+    <section class="product-catalog">
+        <div class="product" data-product="Mobile Phone" data-price="$199.99">
+            <img src="../4080.webp" alt="Product 1">
+            <div class="product-info">
+                <p>Product 1</p>
+            </div>
+        </div>
+
+        <div class="product" data-product="Laptop" data-price="$599.99">
+            <img src="../Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Product 2">
+            <div class="product-info">
+                <p>Product 2</p>
+            </div>
+        </div>
+
+        <div class="product" data-product="Headphones" data-price="$29.99">
+            <img src="../SennheiserHighlight.webp" alt="Product 3">
+            <div class="product-info">
+                <p>Product 3</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Modifying Attributes -->
+    <section class="image-gallery">
+        <img id="displayImage" src="../Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Image 1" style="width: 300px;">
+
+        <div>
+        <input type="text" id="imageUrl" placeholder="Enter image URL">
+        <button onclick="updateImage()">Update Image</button>
+    </div>  
+        <button id="removeAltBtn">Remove Alt Attribute</button>
+    </section>
+
+    <!-- 3. Modifying Styles -->
+    <section class="Modifying-CSS-Styles">
+        <h1>Modifying CSS Styles</h1>
+        <div>
+        <input type="range" id="fontSizeSlider" min="10" max="50" value="16">
+        <p id="resizableText">This text size will be adjusted dynamically.</p>
+</div>
+    
+        <button id="themeSwitcher">Click to become a dark theme</button>
+
+    </section>
+
+    <section class="Modifying-Classes">
+        <h1>Modifying Classes</h1>
+
+        <div class="form-validation">
+            <h2>Form Validation</h2>
+        <form>
+        <input type="email" id="email" placeholder="Enter your email">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+        <div class="activation-link">
+            <h2>Activation Link</h2>
+            <nav>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+              </nav>
+        </div>
+
+        <div class="galleryactive-link">
+            <h2>Gallery Active Link</h2>
+            <img src="./images.png" class="thumbnail">
+            <img src="./aplicando-estilos-css-1521410533.png" class="thumbnail">
+            <img src="./JavaScript-logo.png" class="thumbnail">
+          </div>
+          
+
+          <div class="loading-button">
+            <button id="submitButton">Submit</button>
+
+            <svg class="spinner" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+              </svg>       
+          </div>
+
+          <div class="humburger-menu" id="menuToggle">
+            <h2>Humburger<br> Menu</h2>
+            <button>Dropdown</button>
+          <nav class="nav-menu">
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+          </nav>   
+        </div>
+     
+        <header id="mainHeader">Sticky Header</header>
+
+        <div class="show-hide_elements">
+            <button id="toggleText"><span class="textclick">Hide Text</span></button>
+            <p id="text">This is a toggleable text!</p>
+        </div>
+
+    </section>
+
+    <section class="Modifying-Element-Properties">
+        <h1>Modifying Element Properties</h1>
+
+        <div class="image-slider">
+            <h2>Image Slider</h2>
+        <div class="slider">
+            <img id="sliderImage" src="./images.png" alt="Image Slider" />
+        </div>
+        <button id="nextButton">Next Image</button>
+    </div>
+
+        <div class="form-input-character-counter">
+            <h2>Form Input Character Counter</h2>
+            <textarea id="textInput" placeholder="Type here..."></textarea>
+            <p id="charCount">Characters: 0</p>
+        </div>
+
+        <div class="dynamic-color-picker">
+            <h2>Dynamic Color Picker</h2>
+            <input type="color" id="colorPicker" />
+            <div id="colorBox" style="width: 200px; height: 200px; border: 1px solid #000;"></div>
+        </div>
+
+        <div class="completion-toggle">
+            <h2>Completion Toggle</h2>
+            <ul id="todoList">
+                <li><i class="fa-solid fa-check"></i> <p>Learn JavaScript</p></li>
+                <li><i class="fa-solid fa-check"></i> <p>Build a website</p></li>
+                <li><i class="fa-solid fa-check"></i> <p>Master CSS</p></li>
+            </ul>
+        </div>
+
+        <div class="dynamic-loading-spinner">
+            <h2>Dynamic Loading Spinner</h2>
+            <div id="spinner" style="display: none;">Loading...</div>
+            <button id="fetchData">Fetch Data</button>
+        </div>
+
+        <div class="dynamic-font-size">
+            <h2>Dynamic Font Size</h2>
+            <button id="increaseFont">Increase Font</button>
+            <button id="decreaseFont">Decrease Font</button>
+            <p id="textTo">Adjust my font size!</p>
+        </div>
+
+    </section>
+
+
+    <script src="./script.js"></script>
+
+</body>
+</html>

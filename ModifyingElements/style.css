@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  color: white;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  min-height: fit-content;
+  padding: 100px 0;
+}
+
+.product-catalog {
+  background-color: #414852;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+}
+
+.product {
+  width: 320px;
+  aspect-ratio: 1/1.5;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, width 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  width: 330px;
+}
+
+.product img {
+  object-fit: cover;
+  width: 100%;
+  height: 50%;
+  border-radius: 20px 20px 0 0;
+}
+
+.product-info {
+  width: 100%;
+  height: 50%;
+  background-color: #414852;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.product-info p {
+  background-color: yellowgreen;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px 30px;
+  border-radius: 10px;
+  transition: background-color 0.1s;
+  cursor: pointer;
+}
+
+.product-info p:hover {
+  background-color: rgb(255, 204, 0);
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #22e5e5;
+  font-weight: 600;
+  text-align: center;
+}
+
+.image-gallery {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.image-gallery img {
+  width: 600px !important;
+  height: 400px;
+  object-fit: cover;
+}
+.image-gallery button {
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: #7900ff;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.image-gallery div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.image-gallery input[type=text] {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.font-resizer_colortheme {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+.font-resizer_colortheme div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.font-resizer_colortheme #themeSwitcher {
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.dark-theme {
+  background-color: black;
+  color: #ffffff;
+}
+.dark-theme #themeSwitcher {
+  border-color: white;
+  color: white;
+}
+
+.Modifying-Classes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  position: relative;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 350px 0 50px 0;
+  text-wrap: nowrap;
+}
+.Modifying-Classes h1 {
+  position: absolute;
+  top: 50px;
+  color: black;
+  font-size: 3rem;
+}
+.Modifying-Classes div {
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.Modifying-Classes h2 {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  translate: -50%;
+}
+.Modifying-Classes .thumbnail {
+  width: 150px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.Modifying-Classes .form-validation {
+  padding: 100px 50px;
+}
+.Modifying-Classes .form-validation form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.Modifying-Classes .form-validation form input {
+  padding: 10px;
+  outline: none;
+  border-color: transparent;
+  border-radius: 5px;
+  background-color: white;
+}
+.Modifying-Classes .form-validation form .invalid {
+  border: 2px solid red;
+}
+.Modifying-Classes .form-validation form button {
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: rgb(7, 103, 220);
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .activation-link {
+  padding: 100px 80px 40px 80px;
+}
+.Modifying-Classes .activation-link .active {
+  color: red;
+}
+.Modifying-Classes .activation-link nav {
+  background-color: skyblue;
+  border-radius: 10px;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Modifying-Classes .activation-link nav a {
+  text-decoration: none;
+  color: rgb(48, 28, 121);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .galleryactive-link {
+  padding: 50px 40px 30px 40px;
+  gap: 30px;
+}
+.Modifying-Classes .galleryactive-link .thumbnail {
+  scale: 0.8;
+  transition: scale 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .galleryactive-link .active {
+  scale: 1;
+}
+.Modifying-Classes .loading-button {
+  padding: 10px 30px;
+  background-color: rgb(0, 81, 243);
+  cursor: pointer;
+}
+.Modifying-Classes .loading-button button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  height: max-content;
+}
+.Modifying-Classes .loading-button .spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+.Modifying-Classes .loading-button .spinner .path {
+  stroke: hsl(0, 0%, 100%);
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+.Modifying-Classes #menuToggle {
+  padding: 120px 70px 50px 70px;
+  border-radius: 10px;
+  background-color: black;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Modifying-Classes #menuToggle button {
+  padding: 10px 25px;
+  border: 0;
+  border-radius: 5px;
+  background-color: orangered;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .nav-menu {
+  display: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: white;
+}
+.Modifying-Classes .nav-menu a {
+  text-decoration: none;
+  color: black;
+  padding-block: 10px;
+}
+.Modifying-Classes .nav-menu a:hover {
+  background-color: #22e5e5;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+.Modifying-Classes .nav-menu a:nth-of-type(1) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.Modifying-Classes .nav-menu a:nth-last-of-type(1) {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.Modifying-Classes .show-menu {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.Modifying-Classes #mainHeader {
+  position: absolute;
+  padding: 15px 0;
+  background-color: #333;
+  color: white;
+  width: 170px;
+  margin: 0 auto;
+  top: 15%;
+  border-radius: 10px;
+  transition: width 0.4s;
+  z-index: 100;
+}
+.Modifying-Classes .sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100% !important;
+  border-radius: 0 !important;
+}
+.Modifying-Classes .hidden {
+  display: none;
+}
+.Modifying-Classes .show-hide_elements {
+  padding: 50px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.Modifying-Classes .show-hide_elements button {
+  padding: 10px 25px;
+  border: 0;
+  border-radius: 5px;
+  background-color: darkcyan;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,479 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    color: white;
+    overflow-x: hidden;
+    text-align: center ;
+
+}
+h1{
+    position: absolute;
+    top: 50px;
+    color: black;
+    font-size: 3rem;
+}
+
+section{
+    width: 100vw;
+    height: 100vh;
+    min-height: fit-content;
+    padding: 200px 50px;
+    gap: 50px;
+    position: relative;
+    text-wrap: wrap;
+    flex-wrap: wrap;
+
+}
+
+@mixin flexItemPositioning($flexDirection: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.product-catalog{
+    background-color: #414852;
+    @include flexItemPositioning();
+    column-gap: 50px;
+    
+
+.product {
+    width: 320px;
+    aspect-ratio: 1/1.5;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, width 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    width: 330px;
+}
+
+.product img {
+    object-fit: cover;
+    width: 100%;
+    height: 50%;
+    border-radius: 20px 20px 0 0;
+}
+
+.product-info {
+    width: 100%;
+    height: 50%;
+    background-color: #414852;
+    border-radius: 0 0 20px 20px;
+    @include flexItemPositioning(column);
+    gap: 20px;
+}
+
+.product-info p {
+    background-color: yellowgreen;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 10px;
+    transition: background-color 0.1s;
+    cursor: pointer ;
+
+}
+
+.product-info p:hover {
+    background-color: rgb(255, 204, 0);
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #22e5e5;
+    font-weight: 600;
+    text-align: center;
+}
+}
+
+.image-gallery{
+    background-color: lightblue;
+    @include flexItemPositioning(column);
+    gap: 50px;
+ 
+    img{
+        width: 600px !important;
+        height: 400px;
+        object-fit: cover;
+    }
+    button{
+        padding: 10px 30px;
+        border: 0;
+        border-radius: 15px;
+        background-color: #7900ff;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    div{
+        @include flexItemPositioning(column);
+        gap: 10px;
+    }
+    input[type="text"]{
+        width: 100%;
+        padding: 10px;
+        border: 0;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+    }
+}
+
+.Modifying-CSS-Styles{
+    @include flexItemPositioning(column);
+    gap: 50px;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+
+    div{
+        @include flexItemPositioning(column);   
+    }
+    #themeSwitcher{
+        padding: 10px 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: transparent;
+        font-weight: 600;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    
+  .dark-theme {
+    background-color: black;
+    color: #ffffff ;
+  
+  #themeSwitcher {
+    border-color: white; 
+    color: white;             
+}
+  }
+}
+
+.Modifying-Classes{
+    @include flexItemPositioning(row);
+    background-color: orange;
+    padding: 350px 0 50px 0;
+
+    
+    div{
+        background-color: black;
+        border-radius: 20px;
+        position: relative;
+        @include flexItemPositioning(row);
+
+    }
+    h2{
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        translate: -50%;
+    }
+    .thumbnail{
+        width: 150px;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .form-validation{
+        padding: 100px 50px;
+   
+        form{
+            @include flexItemPositioning(column);
+            gap: 15px;
+            input{
+                padding: 10px;
+                outline: none;
+                border-color: transparent;
+                border-radius: 5px;
+                background-color: white;
+        
+            }
+            .invalid { 
+                border: 2px solid red
+            }
+
+            button{
+                padding: 10px 30px;
+                border: 0;
+                border-radius: 15px;
+                background-color: rgb(7, 103, 220);
+                color: white;
+                font-weight: 600;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+        }
+}
+    .activation-link{
+        padding: 100px 80px 40px 80px;
+        .active { color: red; }
+
+        nav{
+            background-color: skyblue;
+            border-radius: 10px;
+            padding: 10px 40px;
+            @include flexItemPositioning(row);
+            gap: 20px;
+            a{
+                text-decoration: none;
+                color: rgb(48, 28, 121);
+                font-size: 1.2rem;
+                font-weight: 600;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .galleryactive-link{
+        padding: 50px 40px 30px 40px;
+        gap: 30px;
+        
+        .thumbnail { 
+            scale: 0.8;
+            transition: scale 0.2s;
+            cursor: pointer;
+        }
+        .active { scale: 1; }
+    }
+    
+    .loading-button{
+        padding: 10px 30px;
+        background-color: rgb(0, 81, 243);
+        cursor: pointer;
+    
+        button{
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            height: max-content;
+        }
+
+        .spinner {
+            animation: rotate 2s linear infinite;
+            z-index: 2;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            & .path {
+              stroke: hsl(0, 0%, 100%);
+              stroke-linecap: round;
+              animation: dash 1.5s ease-in-out infinite;
+            }
+            
+          }
+        
+          @keyframes rotate {
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+          
+          @keyframes dash {
+            0% {
+              stroke-dasharray: 1, 150;
+              stroke-dashoffset: 0;
+            }
+            50% {
+              stroke-dasharray: 90, 150;
+              stroke-dashoffset: -35;
+            }
+            100% {
+              stroke-dasharray: 90, 150;
+              stroke-dashoffset: -124;
+            }
+          }
+  }
+
+  #menuToggle{
+    padding: 120px 70px 50px 70px;
+    border-radius: 10px;
+    background-color: black;
+    cursor: pointer;
+    @include flexItemPositioning(column);
+
+    button{
+        padding: 10px 25px;
+        border: 0;
+        border-radius: 5px;
+        background-color: orangered;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+}
+.nav-menu { 
+    display: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: white;
+
+    a{
+        text-decoration: none;
+        color: black;
+        padding-block: 10px;
+
+        &:hover {
+            background-color: #22e5e5;
+            color: white;
+            width: 100%;
+            height: 100%;
+
+         }
+         &:nth-of-type(1) {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+         }
+         &:nth-last-of-type(1) {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+         }
+    }
+}
+.show-menu { 
+    display: block;
+    @include flexItemPositioning(column);
+    gap: 10px;
+ }   
+ #mainHeader {
+     position: absolute; 
+     padding: 15px 0; 
+     background-color: #333;
+     color: white; 
+     width: 170px; 
+     margin: 0 auto;
+     top: 15%;
+     border-radius: 10px;
+     transition:  width 0.4s ;
+     z-index: 100;
+    }
+    
+.sticky { 
+    position: fixed !important; 
+    top: 0 !important; 
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    border-radius: 0 !important; 
+
+}
+
+.hidden { 
+    display: none; 
+}
+    .show-hide_elements{
+        padding: 50px 70px;
+        @include flexItemPositioning(column);
+        gap: 20px;
+
+
+        button{
+            padding: 10px 25px;
+            border: 0;
+            border-radius: 5px;
+            background-color: darkcyan;
+            color: white;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+        }   
+    }
+}
+
+.Modifying-Element-Properties{
+        background-color: #90e1cf;
+        @include flexItemPositioning(row);
+
+        div{
+            background-color: #1f1f5d;
+            border-radius: 20px;
+            position: relative;
+            @include flexItemPositioning(column);
+            gap: 30px ;
+            padding: 50px;
+        }
+        button{
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 0;
+            border-radius: 5px;
+            background-color: gray;
+            color: white;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        img{
+            width: 150px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 15px;
+
+        }
+
+        .image-slider{
+            gap: 20px;
+            padding: 50px 40px;
+        }
+        .form-input-character-counter{
+            padding: 50px 40px;
+          
+    }
+
+        .dynamic-color-picker{
+            input[type="color"]{
+                border: none;
+                background-color: transparent;
+                border-radius: 50;
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                clip-path: circle(20% at 50% 50%);
+            }
+        }
+
+        .completion-toggle {
+            user-select: none;
+
+            ul {
+                list-style: none;
+        
+                li {
+                    @include flexItemPositioning(row, space-between, center);
+                    column-gap: 10px;
+        
+                    i {
+                        font-size: 0.9rem;
+                        border: 1px solid white;
+                        border-radius: 3px;
+                        padding: 2px;
+                        color: transparent;
+                        cursor: pointer;
+                    }
+                    p {
+                        flex: 1;
+                        text-align: left;
+                        
+                    }
+                }
+            }
+        }
+        
+
+}
+
+
