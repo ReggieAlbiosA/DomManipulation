@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Product Dashboard{% endblock %}</title>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.7.1-web/css/all.min.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+    {% block content %}
+    
+    
+    <section id="notification">
+        <h2>Welcome! Please read me.</h2>
+        <p>The page you are on is a static version of the dashboard. To view this dashboard in a gated environment, click the button below!</p>
+        <a href="{{ url_for('signup') }}">Signup test</a>
+        <i class="fa-solid fa-xmark"></i>
+    </section>
+
+
+
+    <aside>
+        <div class="wrapper">
+            <a href="">
+                <img src="https://assets.website-files.com/64523c5375706a4c6e3c0f9f/6452406103e23e43267e9671_logo.svg" loading="lazy" alt="" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <i class="fa-regular fa-clock"></i>
+                        <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-box"></i>
+                        <a href="">Product</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <a href="">Orders</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user"></i>
+                        <a href="">Membership</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-gear"></i>
+                        <a href="">Settings</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <a href="">Upgrade plan</a>
+    </aside>
+    
+    {% endblock %}
+
+
+    <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('notification');  
+    const closeIcon = document.querySelector('#notification i'); // Select the close icon within the notification
+
+    // Check if the notification has already been dismissed
+    if (localStorage.getItem('notificationDismissed') === 'true') {
+        console.log('Notification already dismissed.');
+        notification.style.display = 'none'; // Hide the notification if already dismissed
+    } else {
+        console.log('Showing notification.');
+        notification.style.display = 'flex'; // Show the notification if not dismissed
+    }
+
+    // Close the notification and store the dismissed state
+    if (closeIcon) {
+        closeIcon.addEventListener('click', () => {
+            notification.style.display = 'none';
+            localStorage.setItem('notificationDismissed', 'true');
+            console.log('Notification dismissed and stored in localStorage.');
+        });
+    }
+});
+
+    const listElements = document.querySelectorAll('aside li');    
+
+    listElements.forEach(listElement => listElement.addEventListener('mouseover', () => {
+        listElement.style.backgroundColor = 'white';
+        listElement.children[0].style.color = 'black';
+        listElement.children[1].style.color = 'black';
+    }));
+
+    listElements.forEach(listElement => listElement.addEventListener('mouseout', () => {
+        listElement.style.backgroundColor = 'transparent';
+        listElement.children[0].style.color = '#c3d6fb';
+        listElement.children[1].style.color = '#c3d6fb';
+    }));
+  
+    </script>
+
+</body>
+</html>

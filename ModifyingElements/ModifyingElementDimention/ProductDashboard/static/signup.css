@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background: white;
+  color: black !important;
+}
+
+.signup form button:hover {
+  background: black;
+  color: white;
+}
+
+body, .signup form .separator-header {
+  display: grid;
+  place-items: center;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.signup {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-width: 480px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: auto;
+      -ms-flex-align: auto;
+          align-items: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 48px;
+}
+.signup img {
+  scale: 0.5;
+}
+.signup h2 {
+  font-size: 2rem;
+}
+.signup form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: auto;
+      -ms-flex-pack: auto;
+          justify-content: auto;
+  -webkit-box-align: auto;
+      -ms-flex-align: auto;
+          align-items: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 18px;
+}
+.signup form * {
+  border-radius: 10px;
+}
+.signup form label {
+  line-height: 25px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.signup form .container {
+  width: 100%;
+  position: relative;
+}
+.signup form input {
+  padding: 10px 20px;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: 1px solid rgb(211, 211, 211);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.signup form input::-webkit-input-placeholder {
+  color: rgb(136, 136, 136);
+}
+.signup form input::-moz-placeholder {
+  color: rgb(136, 136, 136);
+}
+.signup form input:-ms-input-placeholder {
+  color: rgb(136, 136, 136);
+}
+.signup form input::-ms-input-placeholder {
+  color: rgb(136, 136, 136);
+}
+.signup form input::placeholder {
+  color: rgb(136, 136, 136);
+}
+.signup form input:focus {
+  border: 1px solid #3fa3fc;
+}
+.signup form button {
+  background: #3fa3fc;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 18px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.signup form .separator-header {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(202, 202, 202);
+}
+.signup form .separator-header span {
+  position: absolute;
+  font-size: 0.7rem;
+  background-color: white;
+  padding: 0 10px;
+}
+.signup form a {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid rgb(211, 211, 211);
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 0px 15px;
+  -webkit-transition: border 0.3s ease;
+  transition: border 0.3s ease;
+}
+.signup form a:hover {
+  border: rgb(59, 59, 255) 1px solid;
+}/*# sourceMappingURL=signup.css.map */

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        .container {
+            width: 360px;
+            height: 400px;
+            background-color: black;
+            border-radius: 20px;
+            padding: 20px;
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            place-items: center;
+            gap: 10px;
+        }
+
+        .result {
+            grid-column: span 4;
+            text-align: right;
+            background-color: transparent;
+            justify-self: right;
+            margin-right: 10px;
+            font-size: 1.9rem;
+            cursor: text;
+        }
+       
+        button {
+            width: 60px;
+            height: 35px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .utility {
+            background-color: #c8d1dc;
+            color: black;
+        }
+        .utility:hover {
+            background-color: #e2e2e3; 
+        }
+        .arithmetic {
+            background-color: #ea930f;
+        }
+        .arithmetic:hover {
+            background-color: #e59f36;
+        }
+        
+        .focused-arithmetic {
+            background-color: #dbc19b !important;
+        }
+        .digits {
+            background-color: #393d41;
+        }
+        .digits:hover {
+            background-color: #4a4c53;
+        }
+        .zero {
+            grid-column: span 2;
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="result">0</div>
+        <button class="utility clear">AC</button>
+        <button class="utility sign">+/-</button>
+        <button class="utility percent">%</button>
+        <button class="arithmetic division">/</button>
+        <button class="digits">7</button>
+        <button class="digits">8</button>
+        <button class="digits">9</button>
+        <button class="arithmetic multiplication">*</button>
+        <button class="digits">4</button>
+        <button class="digits">5</button>
+        <button class="digits">6</button>
+        <button class="arithmetic subtraction">-</button>
+        <button class="digits">1</button>
+        <button class="digits">2</button>
+        <button class="digits">3</button>
+        <button class="arithmetic ">+</button>
+        <button class="digits zero">0</button>
+        <button class="digits">.</button>
+        <button class="arithmetic equal">=</button>
+    </div>
+
+    <script>
+        const resultDiv = document.querySelector('.result'); // Select the result div
+        const digitButtons = document.querySelectorAll('.digits'); // Select all digit buttons
+        const clearButton = document.querySelector('.clear'); // Select the clear button
+        const percentage = document.querySelector('.percent');
+        const signButton = document.querySelector('.sign'); // Select the sign button
+        const operatorButtons = document.querySelectorAll('.arithmetic:not(.equal)'); // Select operator buttons
+        const equalButton = document.querySelector('.equal'); // Select the equal button
+    
+        let currentDisplay = '0'; // Initial value for the result display
+        let firstOperand = null; // Store the first operand
+        let secondOperand = null; // Store the second operand for continuous evaluation
+        let operator = null; // Store the operator
+        let shouldResetDisplay = false; // Flag to determine if display should be reset
+        let activeOperatorButton = null; // To track the currently selected operator button
+    
+        const MAX_DISPLAY_LENGTH = 12; // Maximum length for the display
+    
+        // Function to format the display
+        function formatDisplay(value) {
+            if (value.length > MAX_DISPLAY_LENGTH) {
+                // Convert to scientific notation
+                const num = Number(value);
+                return num.toExponential(3); // Limit to 3 decimal places
+            }
+            return value; // Return formatted value
+        }
+    
+        // Function to update the display
+        function updateDisplay(value) {
+            if (shouldResetDisplay) {
+                currentDisplay = value; // Reset the display with the clicked number
+                shouldResetDisplay = false; // Reset the flag
+            } else {
+                if (currentDisplay === '0') {
+                    currentDisplay = value; // Replace '0' with the clicked number
+                } else {
+                    currentDisplay += value; // Append clicked number
+                }
+            }
+            resultDiv.textContent = formatDisplay(currentDisplay); // Update result div with new value
+        }
+    
+        // Function to clear the display
+        function clearDisplay() {
+            currentDisplay = '0'; // Reset the display value to '0'
+            firstOperand = null; // Reset first operand
+            secondOperand = null; // Reset second operand
+            operator = null; // Reset operator
+            if (activeOperatorButton) {
+                activeOperatorButton.style.backgroundColor = ''; // Reset the background color of the active operator
+            }
+            resultDiv.textContent = currentDisplay; // Update the result div
+        }
+    
+        // Function to toggle the sign of the current display
+        function toggleSign() {
+            if (currentDisplay !== '0' && currentDisplay !== '') {
+                if (currentDisplay.startsWith('-')) {
+                    currentDisplay = currentDisplay.substring(1); // Remove negative sign
+                } else {
+                    currentDisplay = '-' + currentDisplay; // Add negative sign
+                }
+                resultDiv.textContent = formatDisplay(currentDisplay); // Update the result div
+            }
+        }
+    
+        // Function to calculate percentage
+        function percent() {
+            const currentNumber = parseFloat(currentDisplay); // Convert the display to a floating-point number
+            currentDisplay = String(currentNumber / 100); // Divide the number by 100 to get the percentage
+            resultDiv.textContent = formatDisplay(currentDisplay); // Update the result div
+    
+            // Store the result of the percentage as the first operand
+            firstOperand = parseFloat(currentDisplay);
+            secondOperand = null; // Reset the second operand
+        }
+    
+        // Function to handle arithmetic operations
+        function setOperator(op, button) {
+            if (firstOperand === null) {
+                firstOperand = parseFloat(currentDisplay); // Store the first operand
+            } else if (secondOperand === null) {
+                secondOperand = parseFloat(currentDisplay); // Store the second operand for continuous evaluation
+            }
+    
+            operator = op; // Set the operator
+            shouldResetDisplay = true; // Flag to reset display on next digit input
+    
+            // Change background color of the active operator
+            if (activeOperatorButton) {
+                activeOperatorButton.style.backgroundColor = ''; // Reset the previous active operator's background
+            }
+            button.style.backgroundColor = '#dbc19b'; // Set the background color of the current operator
+            activeOperatorButton = button; // Update the active operator button
+        }
+    
+        // Function to perform the selected operation
+        function operate(operator, a, b) {
+            switch (operator) {
+                case '+':
+                    return a + b;
+                case '-':
+                    return a - b;
+                case '*':
+                    return a * b;
+                case '/':
+                    return a / b;
+                default:
+                    return b;
+            }
+        }
+    
+        // Function to evaluate the expression and display the result
+        function evaluate() {
+            if (operator && firstOperand !== null) {
+                if (secondOperand === null) {
+                    secondOperand = parseFloat(currentDisplay); // Store second operand for consecutive evaluation
+                }
+                // Calculate and update the current display
+                currentDisplay = String(operate(operator, firstOperand, secondOperand)); 
+                resultDiv.textContent = formatDisplay(currentDisplay); // Update result div
+                firstOperand = parseFloat(currentDisplay); // Store the result as the first operand for next calculation
+            }
+    
+            // Reset the operator button background color after evaluation
+            if (activeOperatorButton) {
+                activeOperatorButton.style.backgroundColor = ''; // Reset the background color
+                activeOperatorButton = null; // Clear the active operator button
+            }
+        }
+    
+        // Add event listeners to all digit buttons
+        digitButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const digit = e.target.textContent; // Get the text of clicked button
+                updateDisplay(digit); // Update the display with the clicked digit
+            });
+        });
+    
+        // Add event listener to the clear button
+        clearButton.addEventListener('click', clearDisplay); // Clear the display when clicked
+    
+        // Add event listener to the sign button
+        signButton.addEventListener('click', toggleSign); // Toggle the sign of the display
+    
+        // Add event listener for the percentage button
+        percentage.addEventListener('click', percent);
+    
+        // Add event listeners to all operator buttons
+        operatorButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const op = e.target.textContent; // Get the operator
+                setOperator(op, e.target); // Set the operator and pass the button element
+            });
+        });
+    
+        // Add event listener for the equal button
+        equalButton.addEventListener('click', evaluate); // Evaluate the expression when clicked
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

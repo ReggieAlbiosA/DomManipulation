@@ -1,0 +1,179 @@
+<!-- Using document.write() after an HTML document is loaded, will delete all existing HTML: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+#quiz-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+}
+
+
+#quiz-question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+
+#quiz-options {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#quiz-options li {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#quiz-options li:hover {
+    background-color: #ddd;
+}
+
+#quiz-options li.selected {
+    background-color: #d4edda;
+}
+
+#next-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#next-btn:hover {
+    background-color: #45a049;
+}
+
+        </style>
+
+    </head>
+
+<body>
+
+    <div id="quiz-container">
+        <h1 id="quiz-question">Question will appear here</h1>
+        <ul id="quiz-options">
+            <!-- Options will be dynamically generated here -->
+        </ul>
+        <button id="next-btn">Next</button>
+    </div>
+
+    <script src="script.js"></script>
+
+
+    <script>
+        const questions = [
+    {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        correct: 0
+    },
+    {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        correct: 1
+    },
+    {
+        question: "Who wrote 'To Kill a Mockingbird'?",
+        options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+        correct: 0
+    },
+    // Add more questions up to 10 or however many you want
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+// Get DOM elements
+const questionElement = document.getElementById('quiz-question');
+const optionsElement = document.getElementById('quiz-options');
+const nextButton = document.getElementById('next-btn');
+
+// Function to show a question
+function showQuestion(index) {
+    const currentQuestion = questions[index];
+    questionElement.textContent = currentQuestion.question;
+
+    // Clear previous options
+    optionsElement.innerHTML = '';
+
+    // Create new options
+    currentQuestion.options.forEach((option, i) => {
+        const li = document.createElement('li');
+        li.textContent = option; li.addEventListener('click', () => selectOption(i));
+        optionsElement.appendChild(li);
+       
+    });
+}
+
+// Function to handle option selection
+let selectedOption = null;
+function selectOption(index) {
+    selectedOption = index;
+
+    // Highlight selected option (optional)
+    const options = optionsElement.querySelectorAll('li');
+    options.forEach(option => option.classList.remove('selected'));
+    options[index].classList.add('selected');
+}
+
+// Handle 'Next' button click
+nextButton.addEventListener('click', () => {
+    if (selectedOption === null) {
+        alert("Please select an answer!");
+        return;
+    }
+
+    // Check if the selected option is correct
+    if (selectedOption === questions[currentQuestionIndex].correct) {
+        score++;
+    }
+
+    selectedOption = null;
+
+    // Move to the next question or end the quiz
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(currentQuestionIndex);
+    } else {
+        showResults();
+    }
+});
+
+// Show results at the end
+function showResults() {
+    questionElement.textContent = `You scored ${score} out of ${questions.length}`;
+    optionsElement.innerHTML = '';
+    nextButton.style.display = 'none'; // Hide the next button
+}
+
+// Start by showing the first question
+showQuestion(currentQuestionIndex);
+
+    </script>
+
+</body>
+</html>
+<!-- The document.write() method should only be used for testing. -->

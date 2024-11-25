@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {       
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+        .header {
+            background: linear-gradient(to right, #c834bf, #fea744);
+            display: grid;
+            text-align: center;
+            gap: 20px;
+            padding: 5.7rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        .header p {
+            font-size: 1.5rem;
+        }
+        .container {
+            color: black;
+            width: clamp(350px, 90%, 1200px);
+            margin-inline: auto;
+        }
+        h3 {
+            text-align: center;
+            margin-block: 2rem;
+            font-size: 1.8rem;
+        }
+     
+        .faqs-list {
+            list-style: none;
+            border: 1px solid rgb(214, 214, 214); 
+            border-radius: 10px;   
+            width: 95%;
+            margin-inline: auto;
+        }
+
+        .faqs-list li {
+            background-color: #fafafa;
+            padding: 35px 20px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: max-height 0.2s ease-in-out;
+            max-height: 100px;
+            display: grid;
+            gap: 40px;
+            position: relative;
+            padding-right: 15%;
+        }
+        
+        .faqs-list li.expanded {
+            max-height: 200px;
+        }
+
+        .faqs-list li:nth-child(1) {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .faqs-list li:nth-child(5) {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .faqs-list li:nth-child(n+1):nth-child(-n+4) {
+            border-bottom: solid 1px rgb(214, 214, 214);
+        }
+        .faqs-list h4 {
+            font-size: 1.2rem;
+        }
+        .fa-solid {
+            position: absolute;
+            right: 25px;
+            top: 32.5px;
+            font-size: 1.5rem;
+            color: gray;
+            font-weight: 100;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .fa-solid.rotate {
+            transform: rotate(45deg);
+        }
+        .faqs-list li:hover .fa-solid {
+            color: black;
+        }
+
+        .faqs-list p {
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translate(0, -20px);
+            transition: opacity 0.3s ease-in-out , transform 0.3s ease-in-out 0.1s;
+        }
+        .faqs-list li.expanded p {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1>FAQ Examples</h1>
+        <p>Check FAQ examples to reveal the full potential of<br> the widget. Make sure it will suit your any goals.</p>
+    </div>
+
+    <div class="container">
+        <h3>Frequently Asked Questions</h3>
+        <ul class="faqs-list">
+            <li>
+                <h4>Can I cancel my subscription at any time?</h4>
+                <i class="fa-solid fa-plus"></i>
+                <p>You can cancel your subscription anytime without any penalties.</p>
+            </li>
+            <li>
+                <h4>Can I change my plan later on?</h4>
+                <i class="fa-solid fa-plus"></i>
+                <p>Yes, you can change your plan at any time.</p>
+            </li>
+            <li>
+                <h4>Will you renew my subscription automatically?</h4>
+                <i class="fa-solid fa-plus"></i>
+                <p>Your subscription will renew automatically unless you cancel it.</p>
+            </li>
+            <li>
+                <h4>Do you offer any discounts?</h4>
+                <i class="fa-solid fa-plus"></i>
+                <p>We offer discounts for annual subscriptions.</p>
+            </li>
+            <li>
+                <h4>Can I request a refund?</h4>
+                <i class="fa-solid fa-plus"></i>
+                <p>Yes, you can request a refund within 30 days of purchase.</p>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const faqsList = document.querySelectorAll('.faqs-list li');
+
+        faqsList.forEach(faq => {
+            faq.addEventListener('click', () => {
+                // Toggle the 'expanded' class for the FAQ item
+                faq.classList.toggle('expanded');
+
+                // Toggle the rotation for the plus icon
+                const plusIcon = faq.querySelector('.fa-solid');
+                plusIcon.classList.toggle('rotate');
+            });
+        });
+    </script>
+
+</body>
+</html>

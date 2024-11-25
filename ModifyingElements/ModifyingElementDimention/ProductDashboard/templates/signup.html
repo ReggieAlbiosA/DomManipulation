@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+{% endblock %}
+
+{% block content %}
+<section id="signup" class="signup">
+    <img src="https://assets.website-files.com/64523c5375706a4c6e3c0f9f/6459faec8e8752f877fe929e_template%20logo%20black.svg" loading="lazy" alt="" class="mb-24">
+    <h2>Create an account</h2>
+    <form action="/signup" method="post">
+
+        <div class="container">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="e.g.howard.thurman@gmail.com" required>
+    </div>
+
+        <div class="container">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+        <button type="submit">Sign up</button>
+        <div class="separator-header"><span>or</span></div>
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_GOOGLE_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token&scope=profile%20email" class="btn-google">
+            <img src="https://assets.website-files.com/64523c5375706a4c6e3c0f9f/6459faec8e875222defe929f_google.svg" loading="lazy" alt="" class="social-image">
+              <span>Continue with Google</span>
+        </a>
+    </form>
+</section>
+{% endblock %}

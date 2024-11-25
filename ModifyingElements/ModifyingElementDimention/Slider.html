@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            place-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        :root {
+            --initial-height: 400px;
+            --initial-width: 400px;
+            --initial-border-radius: 10px;
+        }
+
+        .initial-container, img {
+            height: var(--initial-height);
+            width: var(--initial-width);
+            border-radius: var(--initial-border-radius);
+        }
+
+        .initial-container {
+            position: relative;
+            outline: 2px solid green;
+            /* overflow: hidden; */
+            display: grid;
+            place-items: center;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .slider-contents {
+            display: inline-flex;
+            transition: transform 0.3s ease;
+            border: 2px solid black;
+            margin-inline: auto;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
+            border: none;
+            background-color: rgb(30, 99, 228);
+            color: rgb(255, 255, 255);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: rgb(21, 76, 177);
+        }
+
+        button:first-child {
+            left: -50px;
+        }
+
+        button:last-child {
+            right: -50px;
+        }
+
+        .main-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <button class="scroll-left">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="initial-container">
+            <div class="slider-contents">
+                <img src="/CSS_Fundamentals/images/https___tf-cmsv2-smithsonianmag-media.s3.amazonaws.com_filer_f2_94_f294516b-db3d-4f7b-9a60-ca3cd5f3d9b2_fbby1h_1.jpg" alt="">
+                <img src="/CSS_Fundamentals/images/hetre-de-ponthus-foret-de-broceliande-concoret.jpg" alt="">
+                <img src="/CSS_Fundamentals/images/Duck_River_reflections_-_20130915-143_HDR_4000x2200.jpg" alt="">
+                <img src="/CSS_Fundamentals/images/alpe-di-siusi-sunrise-with-sassolungo-or-langkofel-royalty-free-image-1623254127.jpg" alt="">
+            </div>
+        </div>
+        <button class="scroll-right">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script>
+let scrollLeft = document.querySelector('.scroll-left');
+let scrollRight = document.querySelector('.scroll-right');
+let sliderContents = document.querySelector('.slider-contents');
+let initialContainer = document.querySelector('.initial-container');
+let currentTransform = 0;
+let containerWidth = initialContainer.offsetWidth;
+
+// Function to update the width and maxTransform values
+function updateWidths() {
+    let sliderContentWidth = sliderContents.scrollWidth;
+    return containerWidth - sliderContentWidth;
+}
+
+// Event listener for scroll-right button
+scrollRight.addEventListener('click', () => {
+    // Calculate the maxTransform based on the current content width
+    let maxTransform = updateWidths();
+
+    // Check if we've reached the last image
+    if (currentTransform <= maxTransform) {
+        // When the slider is at the last image, clone the images
+        let imgItems = sliderContents.querySelectorAll('img');
+
+        // Clone each image and append to the slider
+        imgItems.forEach(function(item) {
+            let clonedItem = item.cloneNode(true); // Clone each item (deep clone)
+            sliderContents.appendChild(clonedItem); // Append the cloned item to the container
+        });
+
+        // Recalculate the maxTransform value after cloning new images
+        maxTransform = updateWidths();
+    }
+
+    // Move slider to the left by one container width
+    if (currentTransform > maxTransform) {
+        currentTransform -= containerWidth;
+        if (currentTransform < maxTransform) {
+            currentTransform = maxTransform;
+        }
+        sliderContents.style.transform = `translateX(${currentTransform}px)`;
+    }
+});
+
+// Event listener for scroll-left button
+scrollLeft.addEventListener('click', () => {
+    
+    // Only move left if we're not already at the start
+    if (currentTransform < 0) {
+        currentTransform += containerWidth;
+        if (currentTransform > 0) {
+            currentTransform = 0;
+        }
+        sliderContents.style.transform = `translateX(${currentTransform}px)`;
+    }
+});
+
+
+    </script>
+</body>
+</html>

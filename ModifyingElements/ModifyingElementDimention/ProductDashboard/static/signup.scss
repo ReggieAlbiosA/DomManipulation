@@ -1,0 +1,101 @@
+@use 'commons';
+
+body{
+    @include commons.colorTheme(light);
+    @include commons.twoDimensionalSizing(100vw, 100vh);;
+    @extend %center-grid;
+}
+
+.signup{
+    @include commons.twoDimensionalSizing(100%, fit-content);
+    max-width: 480px;
+    @include commons.flexItemPositioning(column, space-between, $gap: 48px);
+
+    img{
+        scale: .5;
+    }
+
+    h2{
+        font-size: 2rem;
+    }
+
+    form{
+    width: 100%;
+    @include commons.flexItemPositioning(column, $gap: 18px);
+
+        *{ 
+            border-radius: 10px;
+        }
+    
+
+        label{
+            line-height: 25px;
+            @include commons.typography(.65rem, 600);
+
+        }
+        .container{
+            width: 100%;
+            position: relative;
+        }
+
+        input{
+            padding: 10px 20px;
+            @include commons.twoDimensionalSizing(100%, 50px);
+            outline: none;
+            border: 1px solid rgb(211, 211, 211);
+            @include commons.typography(1.05rem, 500);
+
+            &::placeholder{
+                color: rgb(136, 136, 136);
+            }
+            &:focus{
+                border: 1px solid #3fa3fc;
+            }
+        }
+        button{
+            @include commons.custom-color-theme(#3fa3fc , white);
+            border: none;
+            width: 100%;
+            padding: 18px 0;
+            @include commons.typography(1rem, 600);
+            cursor: pointer;
+            transition:  background-color 0.3s ease;
+            
+            &:hover{
+                @include commons.colorTheme(dark);
+            }
+
+        }
+       
+        .separator-header{
+            position: relative;
+            @include commons.twoDimensionalSizing(100%, 1px);
+            background-color: rgb(202, 202, 202);
+            @extend %center-grid;
+            
+            span{
+                position: absolute;
+                font-size: .7rem;
+                background-color: white;
+                padding: 0 10px;
+            }
+        }
+        a{
+            width: 100%;
+            padding: 10px 0;
+            border:1px solid rgb(211, 211, 211);
+            color: black;
+            @include commons.typography(.9rem, 600);
+            @include commons.flexItemPositioning(row, center, center, 0px 15px);
+            transition: border 0.3s ease;
+
+            &:hover{
+                border: rgb(59, 59, 255) 1px solid;
+            }
+        }
+        
+    }
+    
+   
+    
+}

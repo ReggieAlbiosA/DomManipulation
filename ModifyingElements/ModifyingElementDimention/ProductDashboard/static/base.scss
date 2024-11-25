@@ -1,0 +1,121 @@
+
+@use 'commons' ;
+
+body{
+    @include commons.custom-color-theme(#f5f7fb , black);
+    position: relative;   
+}
+
+// animations
+@keyframes appear {
+    from{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(20px);
+    }
+    }
+
+
+
+ #notification{
+    background-color: white;
+    @include commons.boxEdge_padding_margin_modification(20px, 40px);
+    box-shadow: 10px -10px 10px rgba(211, 211, 211, 0.3);
+    @include commons.flexItemPositioning(column, center, flex-start, 18px);
+    animation: appear 1s ease 3s forwards;
+    opacity: 0;
+    transform: translateY(-100px);
+    width: 98%;
+    position: fixed;
+    left: 1%;
+    z-index: 1;
+
+    h2{
+        @include commons.typography(1.8rem, 800);
+    }
+
+    p{
+        color: gray;
+        @include commons.typography(.88rem, 500);    
+    }
+
+     a{
+        text-decoration: none;
+        @include commons.boxEdge_padding_margin_modification(10px, 13px 58px);
+        @include commons.custom-color-theme(#3fa3fc , white);
+        @include commons.typography(1rem, 500);
+    }
+    .fa-xmark{
+        @extend %dark-theme;
+        @include commons.boxEdge_padding_margin_modification(50%, 5px 7px);
+        scale: .77;
+        @include commons.absolutePositioning($top: 40px, $right: 40px);
+        cursor: pointer;
+    }
+}
+
+aside{
+    @include commons.custom-color-theme(#3a78f2 , white);
+    @include commons.twoDimensionalSizing(255px, 100vh);
+    position: fixed;
+    @include commons.flexItemPositioning(column,$justify-content: space-between, $align-items: auto);
+
+    .wrapper{
+        
+        @include commons.flexItemPositioning(column, space-between, center, 40px);
+        padding-top: 40px;
+
+        img{
+         padding-right: 40px;   
+        }
+
+        nav{
+            width: 100%;
+        }
+        ul{
+            @include commons.flexItemPositioning(column, center, center, 7px);
+    }
+       
+        li{
+            list-style: none;
+            @include commons.twoDimensionalSizing(83%, 50px);
+            @include commons.flexItemPositioning(row, flex-start,center);
+            padding-left: 27px;
+            border-radius: 5px;
+            position: relative;
+            transition: background-color 0.3s ease;
+
+        
+            i, a{
+            color: #c3d6fb;
+            font-size: .9rem;
+            transition: color 0.3s ease;
+        }
+
+            a{
+                @include commons.typography($font-weight: 600, $font-size: .85rem);
+                @include commons.absolutePositioning($left: 27%)
+        }
+        }    
+    }   
+}
+        aside > a{
+            @include commons.typography($font-weight: 600, $font-size: .85rem);
+            @include commons.custom-color-theme(#3fa3fc , white);
+
+            @include commons.twoDimensionalSizing(81%, 40px);
+            @include commons.flexItemPositioning(row, center ,center);
+            border-radius: 5px;
+            margin-inline: auto;
+            margin-bottom: 37px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover{
+            @include commons.custom-color-theme(white , #3fa3fc);
+            }
+        }
+
+

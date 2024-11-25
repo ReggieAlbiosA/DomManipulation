@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:  'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+// placeholder selector
+%light-theme{
+    background: white;
+    color: black !important;
+}
+
+%dark-theme{
+    background: black;
+    color: white;
+}
+
+
+%absolute-horizontal-centering{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+%absolute-vertical-centering{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+%absolute-centering{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%center-grid{
+    display: grid;
+    place-items: center;
+}
+
+
+
+// mixins
+@mixin colorTheme($color-theme){
+    @if $color-theme == 'light'{
+        @extend %light-theme;
+    } @else if $color-theme == 'dark'{
+        @extend %dark-theme;
+    }
+}
+@mixin custom-color-theme($background-color, $color) {
+    background: $background-color;
+    color: $color; 
+}
+
+@mixin boxEdge_padding_margin_modification($border-radius: 50%, $padding: 10px, $margin: 0){
+    border-radius: $border-radius;
+    padding: $padding;
+    margin: $margin;
+}
+@mixin typography($font-size: 1rem, $font-weight: 400, $text-decoration: none){
+    font-size: $font-size;
+    font-weight: $font-weight;
+    text-decoration: $text-decoration;
+}
+@mixin absolutePositioning( $top: auto, $right: auto, $bottom: auto, $left: auto, $x_y-centering: null){
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+
+    @if $x_y-centering == 'center-x' {
+        @extend %absolute-horizontal-centering;
+    }
+
+    @if $x_y-centering == 'center-y' {
+        @extend %absolute-vertical-centering;
+    }
+
+    @if $x_y-centering == 'center-xy' {
+       @extend %absolute-centering;
+    }
+}
+
+@mixin flexItemPositioning($flex-direction: row, $justify-content: auto, $align-items: auto, $gap: auto) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+    gap: $gap;
+}
+
+@mixin twoDimensionalSizing($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}
+
+$global-stored-styles: ();
+
+@mixin store-style($selector, $styles...) {
+  $stored-styles: ();
+
+  @for $i from 1 through length($styles) / 2 {
+    $property: nth($styles, $i * 2 - 1); 
+    $value: nth($styles, $i * 2);     
+
+    $stored-styles: map-merge($stored-styles, ($property: $value));
+  }
+
+  $global-stored-styles: map-merge($global-stored-styles, ($selector: $stored-styles));
+}
+
+@mixin apply-stored-styles($selector) {
+  @if map-has-key($global-stored-styles, $selector) {
+    $stored-styles: map-get($global-stored-styles, $selector);
+
+    @each $property, $value in $stored-styles {
+      #{$property}: $value;
+    }
+  }
+}
+
+
+
+  
+  

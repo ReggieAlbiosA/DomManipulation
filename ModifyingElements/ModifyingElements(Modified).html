@@ -4,34 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Catalog</title>
-    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" href="./css/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 
 </head>
 <body>
 
-
-
-
     <!-- 1. Modifying Element Content -->
     <section class="product-catalog">
+        <h1>Modifying Element Content</h1>
         <div class="product" data-product="Mobile Phone" data-price="$199.99">
-            <img src="../4080.webp" alt="Product 1">
+            <img src="./images/4080.webp" alt="Product 1">
             <div class="product-info">
                 <p>Product 1</p>
             </div>
         </div>
 
         <div class="product" data-product="Laptop" data-price="$599.99">
-            <img src="../Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Product 2">
+            <img src="./images/Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Product 2">
             <div class="product-info">
                 <p>Product 2</p>
             </div>
         </div>
 
         <div class="product" data-product="Headphones" data-price="$29.99">
-            <img src="../SennheiserHighlight.webp" alt="Product 3">
+            <img src="./images/SennheiserHighlight.webp" alt="Product 3">
             <div class="product-info">
                 <p>Product 3</p>
             </div>
@@ -40,7 +37,8 @@
 
     <!-- 2. Modifying Attributes -->
     <section class="image-gallery">
-        <img id="displayImage" src="../Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Image 1" style="width: 300px;">
+        <h1>Modifying Attributes</h1>
+        <img id="displayImage" src="./images/Ajc3ezCTN4FGz2vF4LpQn9-1200-80.jpg" alt="Image 1" style="width: 300px;">
 
         <div>
         <input type="text" id="imageUrl" placeholder="Enter image URL">
@@ -49,16 +47,14 @@
         <button id="removeAltBtn">Remove Alt Attribute</button>
     </section>
 
-    <!-- 3. Modifying Styles -->
-    <section class="Modifying-CSS-Styles">
+    <!-- 3. Modifying CSS Styles -->
+    <section id="theme-section" class="Modifying-CSS-Styles">
         <h1>Modifying CSS Styles</h1>
         <div>
-        <input type="range" id="fontSizeSlider" min="10" max="50" value="16">
-        <p id="resizableText">This text size will be adjusted dynamically.</p>
-</div>
-    
+            <input type="range" id="fontSizeSlider" min="10" max="50" value="16">
+            <p id="resizableText">This text size will be adjusted dynamically.</p>
+        </div>
         <button id="themeSwitcher">Click to become a dark theme</button>
-
     </section>
 
     <section class="Modifying-Classes">
@@ -83,9 +79,9 @@
 
         <div class="galleryactive-link">
             <h2>Gallery Active Link</h2>
-            <img src="./images.png" class="thumbnail">
-            <img src="./aplicando-estilos-css-1521410533.png" class="thumbnail">
-            <img src="./JavaScript-logo.png" class="thumbnail">
+            <img src="./images/images.png" class="thumbnail">
+            <img src="./images/aplicando-estilos-css-1521410533.png" class="thumbnail">
+            <img src="./images/JavaScript-logo.png" class="thumbnail">
           </div>
           
 
@@ -122,7 +118,7 @@
         <div class="image-slider">
             <h2>Image Slider</h2>
         <div class="slider">
-            <img id="sliderImage" src="./images.png" alt="Image Slider" />
+            <img id="sliderImage" src="./images/images.png" alt="Image Slider" />
         </div>
         <button id="nextButton">Next Image</button>
     </div>
@@ -161,10 +157,40 @@
             <p id="textTo">Adjust my font size!</p>
         </div>
 
+        <div class="dynamic-list-filtering">
+            <h2>Dynamic List Filtering</h2>
+            <input type="text" id="filterInput" placeholder="Filter items..." />
+        <ul id="itemList">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Cherry</li>
+            <li>Grape</li>
+        </ul>
+        </div>
+
+        <div class="accordion">
+            <h2>Accordion</h2>
+            <button id="progressButton-increase">Increase Progress</button>
+            <button id="progressButton-decrease">Decrease Progress</button>
+    <div id="progressBarContainer">
+        <div id="progressBar"></div>
+    </div>
+        </div>
+
+        <div class="todo-list">
+            <h2>Todo List</h2>
+                <input type="text" id="todoInput" placeholder="Add a new task..." />
+                <button type="submit">Add</button>
+                <ul id="todoList"></ul>
+        </div>
+
     </section>
 
-
-    <script src="./script.js"></script>
+    <script src="./partial_js/mod-element-content.js"></script>
+    <script src="./partial_js/mod-attributes.js"></script>
+    <script src="./partial_js/mod-css-style.js"></script>
+    <script src="./partial_js/mod-classes.js"></script>
+    <script src="./partial_js/mod-element-properties.js"></script>
 
 </body>
 </html>

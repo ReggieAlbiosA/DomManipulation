@@ -1,0 +1,228 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 11px;
+}
+
+/* Variables */
+$aside-color: #131313;
+$background-hover: #272727;
+$text-color-light: rgb(151, 151, 151);
+$text-color-dark: rgb(170, 170, 170);
+$text-higlight: rgb(255, 255, 255);
+
+/* Mixins */
+@mixin flexPositioning($flex-direction: row, $justify-content: space-between, $align-items: center) {
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin TwoDimensionalSizing($width: 100%, $height: 100%) {
+    width: $width;
+    height: $height;
+}
+@mixin centerAbsoluteVertically{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Placeholders for Shared Styles */
+%rounded {
+    border-radius: 5px;
+    padding: 13px 10px 11px 14px;
+}
+
+%hoverable {
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        color: $text-higlight;
+        background-color: $background-hover;
+    }
+}
+
+
+
+/* Body Styles */
+body {
+    @include TwoDimensionalSizing(100vw, 100vh);
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    padding: 21px;
+    gap: 0 20px;
+
+    @media screen and (max-width: 600px) {
+        padding: 4%;
+    }
+}
+
+/* Sidebar and Aside */
+aside {
+    background-color: $aside-color;
+    @include TwoDimensionalSizing(80px, 100%);
+    @include flexPositioning(column, space-between, stretch);
+    border-inline: 16px solid $aside-color;
+    border-block: 18px solid $aside-color;
+    transition: width 0.6s ease;
+    overflow: hidden;
+
+    &.aside-width-adjustment {
+        width: 289px;
+    }
+}
+
+
+
+/* Group 1 */
+.group1 {
+    height: fit-content;
+    @include flexPositioning(column, space-between, stretch);
+    row-gap: 20px;
+
+
+    .dashboard-header-container {
+        padding: 14px 10px 12px 13px;
+        @include flexPositioning(row, space-between, center);
+        width: 100%;
+        position: relative;
+
+        .dashboard-header {
+            font-weight: 800;
+            transform: scaleX(1.3);
+        }
+
+        .fa-bars {
+            color: $text-color-dark;
+            transform: scaleX(1.5);
+        }
+
+        div {
+            @extend %rounded;
+            @extend %hoverable;
+            padding: 12px 15px;
+            position: absolute;
+            right: 0px;
+            top: 1px;
+            background-color: $aside-color;
+        }
+    }
+
+    .search-input {
+        display: flex;
+        column-gap: 15px;
+        cursor: pointer;
+        font-weight: 100;
+        background-color: $background-hover;
+        @extend %rounded;
+
+        .fa-magnifying-glass {
+            font-weight: 300;
+            color: $text-color-light;
+            font-size: 1.1rem;
+        }
+
+        input[type="search"] {
+            border: none;
+            background-color: transparent;
+            pointer-events: none;
+        }
+    }
+
+    hr {
+        border-color: $aside-color;
+        border-width: 2px;
+        opacity: 0.6;
+    }
+}
+
+/* Group 2 */
+.group2 {
+    @include flexPositioning(column, space-between, stretch);
+    height: fit-content;
+    row-gap: 6px;
+    margin-bottom: 35px;
+
+    .option{
+        border-radius: 5px;
+    }
+
+    a {
+        display: flex;
+        @extend %rounded;
+        @extend %hoverable;
+        position: relative;
+        text-decoration: none;
+        color: $text-color-light;
+
+        
+        span {
+            left: 46px;
+            font-size: 0.83rem;
+            @include centerAbsoluteVertically();
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+    }
+}
+
+/* Group 3 */
+.group3 {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    padding-left: 3px;
+
+    img {
+        @include TwoDimensionalSizing(42px, 42px);
+        border-radius: 6px;
+    }
+
+    span {
+        white-space: nowrap;
+        @include centerAbsoluteVertically();
+        left: 54px;
+        font-size: 0.75rem;
+        line-height: 17px;
+        letter-spacing: 1px;
+    }
+}
+.aside-contents {
+    @include TwoDimensionalSizing();
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 56% 1fr;
+    gap: 20px;
+
+    .image {
+        @include TwoDimensionalSizing();
+        background-size: cover;
+        background-position: center;
+        transition: height .6s ease;
+        
+    }
+
+    .large {
+        grid-column: span 3;
+        &.increase{
+            height: 115%;
+        }
+    }
+    .small{
+        place-self: end;
+
+
+        &.decrease{
+            height: 80%;
+        }
+    }
+    
+}
+
+

@@ -30,6 +30,7 @@ section{
     flex-wrap: wrap;
 
 }
+    
 
 @mixin flexItemPositioning($flexDirection: row, $justify: center, $align: center) {
     display: flex;
@@ -129,34 +130,39 @@ section{
     }
 }
 
-.Modifying-CSS-Styles{
-    @include flexItemPositioning(column);
+.Modifying-CSS-Styles {
+    display: flex;
+    flex-direction: column;
     gap: 50px;
     color: black;
     transition: background-color 0.3s, color 0.3s;
+    padding: 20px; /* Added padding for better visuals */
 
-    div{
-        @include flexItemPositioning(column);   
-    }
-    #themeSwitcher{
-        padding: 10px 20px;
-        border: 2px solid black;
-        border-radius: 10px;
-        background-color: transparent;
-        font-weight: 600;
-        transition: 0.2s;
-        cursor: pointer;
-    }
-    
-  .dark-theme {
+
+
+
+/* Dark theme styles */
+.dark-theme {
     background-color: black;
-    color: #ffffff ;
-  
-  #themeSwitcher {
-    border-color: white; 
-    color: white;             
+    color: white;
 }
-  }
+
+#themeSwitcher {
+    
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+/* Optional dark theme for the button itself */
+#themeSwitcher.dark-theme {
+    background-color: white;
+    color: black;
+}
 }
 
 .Modifying-Classes{
@@ -472,8 +478,31 @@ section{
                 }
             }
         }
-        
 
+        .dynamic-list-filtering{
+            padding: 50px 40px;
+
+            input[type="text"]{
+                border: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                width: 100%;
+            }
+
+        }
+        .accordion{
+            width: 100%;
+            #progressBarContainer{
+                width: 100%;
+                background: #ddd;
+            }
+            #progressBar{
+                width: 0; 
+                height: 20px; 
+                background: green;
+            }
+        }
+      
 }
 
 

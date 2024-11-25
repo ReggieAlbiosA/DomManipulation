@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+
+    <!-- <link rel="stylesheet" href="./style.css"></link> -->
+    <!-- link css inporporating flask syntax to link it -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <aside>
+        <div class="group1">
+            <div class="dashboard-header-container">
+                <span class="dashboard-header">Dashboard</span>
+                 <div><i class="fa-solid fa-bars"></i></div>
+                </div>
+
+                <div class="search-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" placeholder="Search">
+                </div>
+
+                <hr>
+            </div>
+
+        <ul class="group2">
+            <li class="option dashboard">
+                <!-- house icon -->
+                 <a href="/" id="dashboard-link">
+                <i class="fa-solid fa-house"></i> 
+                <span>dashboard</span>
+                </a>
+            </li>
+            <li class="option messages">
+                <!-- paperplane icon -->
+                <a href="#">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>messages</span>
+            </a>
+            </li>
+            <li class="option downloads">
+                <!--  cloud download icon -->
+                  <a href="#">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+                <span>downloads</span>
+                </a>
+            </li>
+            <li class="option users">
+                <!-- two-users icon -->
+                 <a href="#">
+                <i class="fa-solid fa-users"></i>
+                <span>users</span>
+                </a>
+            </li>
+            <li class="option settings">
+                <!-- setting icon -->
+                 <a href="#">
+                <i class="fa-solid fa-gear"></i> 
+                <span>settings</span>
+                </a>
+            </li>
+            <li class="option videos">
+                <!-- tape video icon -->
+                 <a href="#">
+                <i class="fa-solid fa-video"></i>
+                <span>videos</span>
+                </a>
+            </li>
+            <li class="option photography">
+                <!-- camera icon -->
+                 <a href="/photography" id="photography-link">
+                <i class="fa-solid fa-camera"></i>
+                <span>photography</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="group3">
+            <img src="{{ url_for('static', filename='0x0.webp') }}" alt="">
+            <span>Hi there,<br> Mark</span>
+        </div>
+    </aside>
+
+    <div class="aside-contents">
+        <div class="image large"></div>
+        <div class="image small"></div>
+        <div class="image small"></div>
+        <div class="image small"></div>
+    </div>
+
+
+
+    <script>
+    // DOM Element References
+const largeImage = document.querySelector('.image.large');
+const smallImages = document.querySelectorAll('.image.small');
+const options = document.querySelectorAll('.option');
+const aside = document.querySelector('aside');
+const toggleButton = document.querySelector('.group1 div:nth-child(2)');
+
+// Update the images dynamically
+async function fetchAndUpdateImages(apiPath) {
+    const response = await fetch(apiPath);
+    const images = await response.json();
+
+    // Update the large image
+    largeImage.style.backgroundImage = `url(${images[0]})`;
+
+    // Update the small images
+    smallImages.forEach((image, index) => {
+        image.style.backgroundImage = `url(${images[index + 1] || ''})`;
+    });
+}
+
+// Update active navigation link styles
+function updateActiveLink(selectedOption) {
+    options.forEach(option => {
+        option.style.backgroundColor = '';
+        option.querySelector('i').style.color = '';
+        option.querySelector('span').style.color = '';
+    });
+
+    selectedOption.style.backgroundColor = '#5c31ff';
+    selectedOption.querySelector('i').style.color = 'white';
+    selectedOption.querySelector('span').style.color = 'white';
+}
+
+// Navigation handler
+function handleNavigation(path, apiPath, optionElement) {
+    history.pushState(null, '', path); // Update the browser's URL
+    fetchAndUpdateImages(apiPath);    // Fetch new images via API
+    updateActiveLink(optionElement); // Update the active link styling
+}
+
+// Event Listeners
+
+// Handle sidebar toggle
+toggleButton.addEventListener('click', () => {
+    aside.classList.toggle('aside-width-adjustment');
+    largeImage.classList.toggle('increase');
+    smallImages.forEach(image => image.classList.toggle('decrease'));
+});
+
+// Add click event listeners to navigation options
+options.forEach(option => {
+    option.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (option.classList.contains('dashboard')) {
+            handleNavigation('/', '/api/images/dashboard', option);
+        } else if (option.classList.contains('photography')) {
+            handleNavigation('/photography', '/api/images/photography', option);
+        }
+    });
+});
+
+// Handle browser back/forward navigation
+window.addEventListener('popstate', () => {
+    const currentPath = window.location.pathname;
+    if (currentPath === '/photography') {
+        fetchAndUpdateImages('/api/images/photography');
+        updateActiveLink(document.querySelector('.option.photography'));
+    } else {
+        fetchAndUpdateImages('/api/images/dashboard');
+        updateActiveLink(document.querySelector('.option.dashboard'));
+    }
+});
+
+// Initial setup on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const initialPath = window.location.pathname;
+    if (initialPath === '/photography') {
+        fetchAndUpdateImages('/api/images/photography');
+        updateActiveLink(document.querySelector('.option.photography'));
+    } else {
+        fetchAndUpdateImages('/api/images/dashboard');
+        updateActiveLink(document.querySelector('.option.dashboard'));
+    }
+});
+
+    </script>
+
+</body>
+</html>

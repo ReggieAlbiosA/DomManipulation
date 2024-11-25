@@ -1,0 +1,692 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: block;
+  color: white;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+h1 {
+  position: absolute;
+  top: 50px;
+  color: black;
+  font-size: 3rem;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  padding: 200px 50px;
+  gap: 50px;
+  position: relative;
+  text-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.product-catalog {
+  background-color: #414852;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 50px;
+     -moz-column-gap: 50px;
+          column-gap: 50px;
+}
+.product-catalog .product {
+  width: 320px;
+  aspect-ratio: 1/1.5;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transition: width 0.3s, -webkit-transform 0.3s;
+  transition: width 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, width 0.3s;
+  transition: transform 0.3s, width 0.3s, -webkit-transform 0.3s;
+}
+.product-catalog .product:hover {
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  width: 330px;
+}
+.product-catalog .product img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 50%;
+  border-radius: 20px 20px 0 0;
+}
+.product-catalog .product-info {
+  width: 100%;
+  height: 50%;
+  background-color: #414852;
+  border-radius: 0 0 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.product-catalog .product-info p {
+  background-color: yellowgreen;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px 30px;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.1s;
+  transition: background-color 0.1s;
+  cursor: pointer;
+}
+.product-catalog .product-info p:hover {
+  background-color: rgb(255, 204, 0);
+}
+.product-catalog .price {
+  font-size: 1.5rem;
+  color: #22e5e5;
+  font-weight: 600;
+  text-align: center;
+}
+
+.image-gallery {
+  background-color: lightblue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+}
+.image-gallery img {
+  width: 600px !important;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.image-gallery button {
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: #7900ff;
+  color: white;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.image-gallery div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+.image-gallery input[type=text] {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.Modifying-CSS-Styles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+  color: black;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+.Modifying-CSS-Styles div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Modifying-CSS-Styles #themeSwitcher {
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-CSS-Styles .dark-theme {
+  background-color: black;
+  color: #ffffff;
+}
+.Modifying-CSS-Styles .dark-theme #themeSwitcher {
+  border-color: white;
+  color: white;
+}
+
+.Modifying-Classes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: orange;
+  padding: 350px 0 50px 0;
+}
+.Modifying-Classes div {
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Modifying-Classes h2 {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  translate: -50%;
+}
+.Modifying-Classes .thumbnail {
+  width: 150px;
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+.Modifying-Classes .form-validation {
+  padding: 100px 50px;
+}
+.Modifying-Classes .form-validation form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+.Modifying-Classes .form-validation form input {
+  padding: 10px;
+  outline: none;
+  border-color: transparent;
+  border-radius: 5px;
+  background-color: white;
+}
+.Modifying-Classes .form-validation form .invalid {
+  border: 2px solid red;
+}
+.Modifying-Classes .form-validation form button {
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 15px;
+  background-color: rgb(7, 103, 220);
+  color: white;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .activation-link {
+  padding: 100px 80px 40px 80px;
+}
+.Modifying-Classes .activation-link .active {
+  color: red;
+}
+.Modifying-Classes .activation-link nav {
+  background-color: skyblue;
+  border-radius: 10px;
+  padding: 10px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.Modifying-Classes .activation-link nav a {
+  text-decoration: none;
+  color: rgb(48, 28, 121);
+  font-size: 1.2rem;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .galleryactive-link {
+  padding: 50px 40px 30px 40px;
+  gap: 30px;
+}
+.Modifying-Classes .galleryactive-link .thumbnail {
+  scale: 0.8;
+  -webkit-transition: scale 0.2s;
+  transition: scale 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .galleryactive-link .active {
+  scale: 1;
+}
+.Modifying-Classes .loading-button {
+  padding: 10px 30px;
+  background-color: rgb(0, 81, 243);
+  cursor: pointer;
+}
+.Modifying-Classes .loading-button button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+.Modifying-Classes .loading-button .spinner {
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+.Modifying-Classes .loading-button .spinner .path {
+  stroke: hsl(0, 0%, 100%);
+  stroke-linecap: round;
+  -webkit-animation: dash 1.5s ease-in-out infinite;
+          animation: dash 1.5s ease-in-out infinite;
+}
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+.Modifying-Classes #menuToggle {
+  padding: 120px 70px 50px 70px;
+  border-radius: 10px;
+  background-color: black;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Modifying-Classes #menuToggle button {
+  padding: 10px 25px;
+  border: 0;
+  border-radius: 5px;
+  background-color: orangered;
+  color: white;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Classes .nav-menu {
+  display: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: white;
+}
+.Modifying-Classes .nav-menu a {
+  text-decoration: none;
+  color: black;
+  padding-block: 10px;
+}
+.Modifying-Classes .nav-menu a:hover {
+  background-color: #22e5e5;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+.Modifying-Classes .nav-menu a:nth-of-type(1) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.Modifying-Classes .nav-menu a:nth-last-of-type(1) {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.Modifying-Classes .show-menu {
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+.Modifying-Classes #mainHeader {
+  position: absolute;
+  padding: 15px 0;
+  background-color: #333;
+  color: white;
+  width: 170px;
+  margin: 0 auto;
+  top: 15%;
+  border-radius: 10px;
+  -webkit-transition: width 0.4s;
+  transition: width 0.4s;
+  z-index: 100;
+}
+.Modifying-Classes .sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100% !important;
+  border-radius: 0 !important;
+}
+.Modifying-Classes .hidden {
+  display: none;
+}
+.Modifying-Classes .show-hide_elements {
+  padding: 50px 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.Modifying-Classes .show-hide_elements button {
+  padding: 10px 25px;
+  border: 0;
+  border-radius: 5px;
+  background-color: darkcyan;
+  color: white;
+  font-weight: 600;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.Modifying-Element-Properties {
+  background-color: #90e1cf;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Modifying-Element-Properties div {
+  background-color: #1f1f5d;
+  border-radius: 20px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  padding: 50px;
+}
+.Modifying-Element-Properties button {
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 0;
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.Modifying-Element-Properties img {
+  width: 150px;
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 15px;
+}
+.Modifying-Element-Properties .image-slider {
+  gap: 20px;
+  padding: 50px 40px;
+}
+.Modifying-Element-Properties .form-input-character-counter {
+  padding: 50px 40px;
+}
+.Modifying-Element-Properties .dynamic-color-picker input[type=color] {
+  border: none;
+  background-color: transparent;
+  border-radius: 50;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  -webkit-clip-path: circle(20% at 50% 50%);
+          clip-path: circle(20% at 50% 50%);
+}
+.Modifying-Element-Properties .completion-toggle {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.Modifying-Element-Properties .completion-toggle ul {
+  list-style: none;
+}
+.Modifying-Element-Properties .completion-toggle ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+}
+.Modifying-Element-Properties .completion-toggle ul li i {
+  font-size: 0.9rem;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 2px;
+  color: transparent;
+  cursor: pointer;
+}
+.Modifying-Element-Properties .completion-toggle ul li p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: left;
+}
+.Modifying-Element-Properties .dynamic-list-filtering {
+  padding: 50px 40px;
+}
+.Modifying-Element-Properties .dynamic-list-filtering input[type=text] {
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100%;
+}
+.Modifying-Element-Properties .accordion {
+  width: 100%;
+}
+.Modifying-Element-Properties .accordion #progressBarContainer {
+  width: 100%;
+  background: #ddd;
+}
+.Modifying-Element-Properties .accordion #progressBar {
+  width: 0;
+  height: 20px;
+  background: green;
+}/*# sourceMappingURL=Main.css.map */

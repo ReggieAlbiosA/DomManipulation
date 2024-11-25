@@ -182,31 +182,17 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   gap: 50px;
   color: black;
   -webkit-transition: background-color 0.3s, color 0.3s;
   transition: background-color 0.3s, color 0.3s;
+  padding: 20px; /* Added padding for better visuals */
+  /* Dark theme styles */
+  /* Optional dark theme for the button itself */
 }
-.Modifying-CSS-Styles div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.Modifying-CSS-Styles .dark-theme {
+  background-color: black;
+  color: white;
 }
 .Modifying-CSS-Styles #themeSwitcher {
   padding: 10px 20px;
@@ -218,13 +204,9 @@ section {
   transition: 0.2s;
   cursor: pointer;
 }
-.Modifying-CSS-Styles .dark-theme {
-  background-color: black;
-  color: #ffffff;
-}
-.Modifying-CSS-Styles .dark-theme #themeSwitcher {
-  border-color: white;
-  color: white;
+.Modifying-CSS-Styles #themeSwitcher.dark-theme {
+  background-color: white;
+  color: black;
 }
 
 .Modifying-Classes {
@@ -668,4 +650,25 @@ section {
       -ms-flex: 1;
           flex: 1;
   text-align: left;
+}
+.Modifying-Element-Properties .dynamic-list-filtering {
+  padding: 50px 40px;
+}
+.Modifying-Element-Properties .dynamic-list-filtering input[type=text] {
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100%;
+}
+.Modifying-Element-Properties .accordion {
+  width: 100%;
+}
+.Modifying-Element-Properties .accordion #progressBarContainer {
+  width: 100%;
+  background: #ddd;
+}
+.Modifying-Element-Properties .accordion #progressBar {
+  width: 0;
+  height: 20px;
+  background: green;
 }/*# sourceMappingURL=Main.css.map */
